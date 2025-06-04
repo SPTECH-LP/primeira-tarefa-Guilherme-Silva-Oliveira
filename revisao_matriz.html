@@ -1,11 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVISÃO | MATRIZ</title>
 </head>
-<body>
+<style>
+    .container {
+        background-color: black;
+        width: 500px;
+        display: grid;
+        text-align: center;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        padding: 10px;
+        gap: 5px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+
+    .item {
+        background-color: white;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+    .item:hover{
+        transform: scale(1.1);
+    }
+    button{
+        background-color: black;
+        color: white;
+        transition: 0.3s;
+        border: 1px solid black;
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+        border-radius: 20px;
+    }
+    button:hover{
+        background-color: transparent;
+        color: black;
+    }
+    input{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+    }
     
+</style>
+
+<body>
+    <div class="container" id="div_retorno">
+        <!--<div class="item"></div>-->
+    </div>
+
+    <button onclick="montarMatriz()">Montar Matriz</button><br>
+    <input type="text" id="ipt_linha" placeholder="Linha"><br>
+    <input type="text" id="ipt_coluna" placeholder="Coluna"><br>
+    <button onclick="consultarMatriz()">Consultar Matriz</button>
+    <button onclick="somarLinhas()">Somar Linhas</button>
+    <button onclick="somarColunas()">Somar Colunas</button>
+    <br>
+    <br>
+    <div id="div_resposta"></div>
 </body>
+<script>
+    let matriz = [];
+
+    function montarMatriz() {
+        let qtdLinhas = 3;
+        let qtdColunas = 3;
+        let valorInicial = 5;
+
+        for (let linha = 0; linha < qtdLinhas; linha++) {
+            matriz[linha] = [];
+            for (let coluna = 0; coluna < qtdColunas; coluna++) {
+                matriz[linha][coluna] = valorInicial;
+                valorInicial += 5;
+                div_retorno.innerHTML += `<div class="item">${matriz[linha][coluna]}</div>`;
+            }
+        }
+    }
+    function consultarMatriz() {
+        let linha = Number(ipt_linha.value);
+        let coluna = Number(ipt_coluna.value);
+        let valor = matriz[linha][coluna];
+        div_resposta.innerHTML = `O valor da linha ${linha} e da coluna ${coluna} é ${valor}!!`;
+    }
+    function somarLinhas() {
+        for (let i = 0; i < matriz; i++) { }
+        let valor = total;
+        div_resposta.innerHTML = `O valor da linha ${linha} e da coluna ${coluna} é ${valor}`;
+    }
+    function somarColunas() {
+        let valor = matriz[linha][coluna];
+        div_resposta.innerHTML = `O valor da linha ${linha} e da coluna ${coluna} é ${valor}`
+    }
+</script>
+
 </html>
